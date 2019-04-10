@@ -8,10 +8,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @ToString
-public class TablistPlaceholderImpl<T> implements TablistPlaceholder<T> {
+public class TablistPlaceholderImpl implements TablistPlaceholder<String> {
 
     private String key;
     private String description;
-    private T sampleValue;
+    private String sampleValue;
 
 }
