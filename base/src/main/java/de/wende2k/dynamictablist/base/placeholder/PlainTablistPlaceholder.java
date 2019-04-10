@@ -1,6 +1,5 @@
 package de.wende2k.dynamictablist.base.placeholder;
 
-import de.wende2k.dynamictablist.base.placeholder.TablistPlaceholder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
