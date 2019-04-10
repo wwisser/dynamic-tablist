@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
-import java.util.List;
-
 @AllArgsConstructor
 @Getter
 @ToString
@@ -15,8 +13,8 @@ public class TablistConfiguration {
      * Holds the owner as {@link java.util.UUID} string.
      */
     private String owner;
-    private List<String> header;
-    private List<String> footer;
+    private String header;
+    private String footer;
     private long created;
     /**
      * Equals {@link TablistConfiguration#created} if never edited.
