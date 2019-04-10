@@ -1,4 +1,4 @@
 name: DynamicTablist
 version: 1.0-SNAPSHOT
-main: de.wende2k.dynamictablist.DynamicTablistPlugin
+main: de.wende2k.dynamictablist.plugin.DynamicTablistPlugin
 author: Wende2k

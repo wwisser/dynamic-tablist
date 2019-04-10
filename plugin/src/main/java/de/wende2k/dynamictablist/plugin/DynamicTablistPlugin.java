@@ -1,4 +1,4 @@
-package de.wende2k.dynamictablist;
+package de.wende2k.dynamictablist.plugin;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
