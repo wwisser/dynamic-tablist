@@ -1,11 +1,11 @@
 package de.wende2k.dynamictablist.plugin.placeholder.predefined;
 
-import de.wende2k.dynamictablist.base.placeholder.TablistPlaceholder;
+import de.wende2k.dynamictablist.base.placeholder.UpdatableTablistPlaceholder;
 import org.bukkit.Bukkit;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class OnlineCountTablistPlaceholder implements TablistPlaceholder<Integer> {
+public class OnlineCountTablistPlaceholder implements UpdatableTablistPlaceholder<Integer> {
 
     @Override
     public String getKey() {

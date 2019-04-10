@@ -1,9 +1,9 @@
 package de.wende2k.dynamictablist.plugin.placeholder.predefined;
 
-import de.wende2k.dynamictablist.base.placeholder.TablistPlaceholder;
+import de.wende2k.dynamictablist.base.placeholder.UpdatableTablistPlaceholder;
 import org.bukkit.Bukkit;
 
-public class MaxPlayersTablistPlaceholder implements TablistPlaceholder<Integer> {
+public class MaxPlayersTablistPlaceholder implements UpdatableTablistPlaceholder<Integer> {
 
     @Override
     public String getKey() {

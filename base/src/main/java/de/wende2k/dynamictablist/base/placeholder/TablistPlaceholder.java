@@ -8,6 +8,4 @@ public interface TablistPlaceholder<T> {
 
     T getSampleValue();
 
-    T updateValue();
-
 }
