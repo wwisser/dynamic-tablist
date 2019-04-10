@@ -24,9 +24,8 @@ public class SqlLiteTablistConfigurationDao implements TablistConfigurationDao {
     public void save(TablistConfiguration tablistConfiguration) {
         try {
             PreparedStatement preparedStatement = this.connection.prepareStatement(
-                "INSERT INTO " + TABLE_NAME
+                "INSERT OR REPLACE INTO " + TABLE_NAME
                     + " (owner, header, footer, created, last_edited) VALUES (?, ?, ?, ?, ?)"
-                    + " ON DUPLICATE KEY UPDATE (header, footer, last_edited)"
             );
 
             preparedStatement.setString(1, tablistConfiguration.getOwner());
