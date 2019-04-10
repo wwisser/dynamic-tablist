@@ -1,12 +1,14 @@
-package de.wende2k.dynamictablist.base;
+package de.wende2k.dynamictablist.base.configuration;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.util.List;
 
 @AllArgsConstructor
 @Getter
+@ToString
 public class TablistConfiguration {
 
     /**
