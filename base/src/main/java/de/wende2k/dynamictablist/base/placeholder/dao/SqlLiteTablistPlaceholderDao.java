@@ -35,6 +35,7 @@ public class SqlLiteTablistPlaceholderDao implements TablistPlaceholderDao {
             preparedStatement.setString(3, tablistPlaceholder.getSampleValue());
 
             preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -60,6 +61,9 @@ public class SqlLiteTablistPlaceholderDao implements TablistPlaceholderDao {
                 results.add(this.decodeResultSet(resultSet));
             }
 
+            resultSet.close();
+            preparedStatement.close();
+
             return results;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -76,6 +80,9 @@ public class SqlLiteTablistPlaceholderDao implements TablistPlaceholderDao {
             while (resultSet.next()) {
                 results.add(this.decodeResultSet(resultSet));
             }
+
+            resultSet.close();
+            preparedStatement.close();
 
             return results;
         } catch (SQLException e) {

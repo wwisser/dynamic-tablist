@@ -35,6 +35,7 @@ public class SqlLiteTablistConfigurationDao implements TablistConfigurationDao {
             preparedStatement.setLong(5, tablistConfiguration.getLastEdited());
 
             preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -54,7 +55,11 @@ public class SqlLiteTablistConfigurationDao implements TablistConfigurationDao {
                 return null;
             }
 
-            return this.decodeResultSet(resultSet);
+            TablistConfiguration tablistConfiguration = this.decodeResultSet(resultSet);
+            resultSet.close();
+            preparedStatement.close();
+
+            return tablistConfiguration;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -70,6 +75,9 @@ public class SqlLiteTablistConfigurationDao implements TablistConfigurationDao {
             while (resultSet.next()) {
                 results.add(this.decodeResultSet(resultSet));
             }
+
+            resultSet.close();
+            preparedStatement.close();
 
             return results;
         } catch (SQLException e) {
