@@ -34,8 +34,8 @@ public class SqlLiteTablistConfigurationDao implements TablistConfigurationDao {
             preparedStatement.setLong(4, tablistConfiguration.getCreated());
             preparedStatement.setLong(5, tablistConfiguration.getLastEdited());
 
+
             preparedStatement.executeUpdate();
-            preparedStatement.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -49,17 +49,14 @@ public class SqlLiteTablistConfigurationDao implements TablistConfigurationDao {
             );
 
             preparedStatement.setString(1, uuid);
-            ResultSet resultSet = preparedStatement.executeQuery();
 
-            if (!resultSet.next()) {
-                return null;
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (!resultSet.next()) {
+                    return null;
+                }
+
+                return this.decodeResultSet(resultSet);
             }
-
-            TablistConfiguration tablistConfiguration = this.decodeResultSet(resultSet);
-            resultSet.close();
-            preparedStatement.close();
-
-            return tablistConfiguration;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -70,14 +67,12 @@ public class SqlLiteTablistConfigurationDao implements TablistConfigurationDao {
         try {
             List<TablistConfiguration> results = new ArrayList<>();
             PreparedStatement preparedStatement = this.connection.prepareStatement("SELECT * FROM " + TABLE_NAME);
-            ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()) {
-                results.add(this.decodeResultSet(resultSet));
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    results.add(this.decodeResultSet(resultSet));
+                }
             }
-
-            resultSet.close();
-            preparedStatement.close();
 
             return results;
         } catch (SQLException e) {

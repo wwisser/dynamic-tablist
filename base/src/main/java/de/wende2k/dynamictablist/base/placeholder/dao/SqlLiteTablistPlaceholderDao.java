@@ -35,7 +35,6 @@ public class SqlLiteTablistPlaceholderDao implements TablistPlaceholderDao {
             preparedStatement.setString(3, tablistPlaceholder.getSampleValue());
 
             preparedStatement.executeUpdate();
-            preparedStatement.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -55,14 +54,9 @@ public class SqlLiteTablistPlaceholderDao implements TablistPlaceholderDao {
                 preparedStatement.setString(index++, key);
             }
 
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 results.add(this.decodeResultSet(resultSet));
             }
-
-            resultSet.close();
-            preparedStatement.close();
 
             return results;
         } catch (SQLException e) {
@@ -75,14 +69,12 @@ public class SqlLiteTablistPlaceholderDao implements TablistPlaceholderDao {
         try {
             List<PlainTablistPlaceholder> results = new ArrayList<>();
             PreparedStatement preparedStatement = this.connection.prepareStatement("SELECT * FROM " + TABLE_NAME);
-            ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()) {
-                results.add(this.decodeResultSet(resultSet));
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    results.add(this.decodeResultSet(resultSet));
+                }
             }
-
-            resultSet.close();
-            preparedStatement.close();
 
             return results;
         } catch (SQLException e) {
