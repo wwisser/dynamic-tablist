@@ -34,7 +34,6 @@ public class SqlLiteTablistConfigurationDao implements TablistConfigurationDao {
             preparedStatement.setLong(4, tablistConfiguration.getCreated());
             preparedStatement.setLong(5, tablistConfiguration.getLastEdited());
 
-
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
