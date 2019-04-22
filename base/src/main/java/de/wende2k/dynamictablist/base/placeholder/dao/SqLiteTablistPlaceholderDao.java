@@ -1,6 +1,6 @@
 package de.wende2k.dynamictablist.base.placeholder.dao;
 
-import de.wende2k.dynamictablist.base.database.SqlLiteConnectionProvider;
+import de.wende2k.dynamictablist.base.database.SqLiteConnectionProvider;
 import de.wende2k.dynamictablist.base.placeholder.PlainTablistPlaceholder;
 
 import java.sql.Connection;
@@ -12,13 +12,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SqlLiteTablistPlaceholderDao implements TablistPlaceholderDao {
+public class SqLiteTablistPlaceholderDao implements TablistPlaceholderDao {
 
     private static final String TABLE_NAME = "tablist_placeholders";
 
     private Connection connection;
 
-    public SqlLiteTablistPlaceholderDao(SqlLiteConnectionProvider connectionProvider) {
+    public SqLiteTablistPlaceholderDao(SqLiteConnectionProvider connectionProvider) {
         this.connection = connectionProvider.getConnection();
     }
 

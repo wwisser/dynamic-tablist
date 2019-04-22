@@ -1,7 +1,7 @@
 package de.wende2k.dynamictablist.base.configuration.dao;
 
 import de.wende2k.dynamictablist.base.configuration.TablistConfiguration;
-import de.wende2k.dynamictablist.base.database.SqlLiteConnectionProvider;
+import de.wende2k.dynamictablist.base.database.SqLiteConnectionProvider;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,13 +10,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SqlLiteTablistConfigurationDao implements TablistConfigurationDao {
+public class SqLiteTablistConfigurationDao implements TablistConfigurationDao {
 
     private static final String TABLE_NAME = "tablist_configs";
 
     private Connection connection;
 
-    public SqlLiteTablistConfigurationDao(SqlLiteConnectionProvider connectionProvider) {
+    public SqLiteTablistConfigurationDao(SqLiteConnectionProvider connectionProvider) {
         this.connection = connectionProvider.getConnection();
     }
 

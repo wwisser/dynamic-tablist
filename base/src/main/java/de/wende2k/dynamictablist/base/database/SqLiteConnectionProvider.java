@@ -7,13 +7,13 @@ import java.sql.DriverManager;
 import java.util.Objects;
 
 @Getter
-public class SqlLiteConnectionProvider {
+public class SqLiteConnectionProvider {
 
-    private static SqlLiteConnectionProvider instance;
+    private static SqLiteConnectionProvider instance;
 
     private Connection connection;
 
-    private SqlLiteConnectionProvider(final String filePath) {
+    private SqLiteConnectionProvider(final String filePath) {
         try {
             this.connection = DriverManager.getConnection(
                 "jdbc:sqlite:"
@@ -26,16 +26,16 @@ public class SqlLiteConnectionProvider {
     }
 
     public static void init(final String filePath) {
-        if (SqlLiteConnectionProvider.instance != null) {
+        if (SqLiteConnectionProvider.instance != null) {
             throw new IllegalArgumentException("Provider already initialized");
         }
 
-        SqlLiteConnectionProvider.instance = new SqlLiteConnectionProvider(filePath);
+        SqLiteConnectionProvider.instance = new SqLiteConnectionProvider(filePath);
     }
 
-    public static SqlLiteConnectionProvider getInstance() {
+    public static SqLiteConnectionProvider getInstance() {
         return Objects.requireNonNull(
-            SqlLiteConnectionProvider.instance,
+            SqLiteConnectionProvider.instance,
             "Provider not initialized yet"
         );
     }
